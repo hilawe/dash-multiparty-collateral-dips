@@ -42,8 +42,8 @@ recommendation while documenting the alternatives, so that the choice is an info
 DIP-0026 (multi-party payouts) lets a masternode's block reward be split among multiple payee
 addresses on-chain, with no intermediary holding the funds in transit. That addresses trustless reward
 distribution. It does not address trustless collateral pooling, which is the harder half of a
-non-custodial alternative to services that stake on a user's behalf (for example, services that
-aggregate small deposits into masternode collateral).
+non-custodial alternative to services that pool collateral on a user's behalf (for example, services
+that aggregate small deposits into masternode collateral).
 
 Pooling matters for three reasons:
 
@@ -101,22 +101,22 @@ the ability to steal future rewards.
 
 Functional requirements, the properties a retail-scale pooling product needs:
 
-- R1. Stake amounts smaller than the full collateral (accessibility).
+- R1. Contributions smaller than the full collateral (accessibility).
 - R2. Lower reward variance through pooling.
-- R3. Decouple a staker's amount from any single node.
+- R3. Decouple a funder's contribution from any single node.
 - R4. Enter and exit without forcing a full node teardown.
-- R5. Staker-chosen withdrawal timing, without creating dust outputs.
-- R6. Governance participation for small stakers.
+- R5. Funder-chosen withdrawal timing, without creating dust outputs.
+- R6. Governance participation for small funders.
 - R7. Scale past the DIP-0026 payee cap for a churning client base.
 
 Security requirements:
 
 - S1. No single party can spend the pooled collateral to itself.
 - S2. No single party can redirect the rewards.
-- S3. Every staker can reclaim its principal without the cooperation of any party that could otherwise
+- S3. Every funder can reclaim its principal without the cooperation of any party that could otherwise
   block it.
 - S4. The construction is safe under chain reorganizations and mempool races.
-- S5. One malicious or absent staker cannot destroy the node and everyone's stake.
+- S5. One malicious or absent funder cannot destroy the node and everyone's collateral.
 
 R1, R3, R4, and R7 are fundamentally about scale and churn, and they are what make the problem hard.
 
