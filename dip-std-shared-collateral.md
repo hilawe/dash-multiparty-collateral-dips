@@ -50,6 +50,10 @@ pre-signed refunds) used by existing shared-masternode services, and it is the b
 retail-scale, Platform-accounted product. See the companion Informational DIP for the full design
 space and trust model.
 
+This DIP specifies the consensus mechanics of the pooled collateral and its settlement. The funder-facing
+application, including the signed-action interface (R9 in the Informational DIP) and the compounding
+behavior (R8), is a product and Platform layer above this primitive and is out of scope here.
+
 ## Specification
 
 ### The covenant

@@ -53,6 +53,9 @@ These are achievable today only by pre-signing transactions and then deleting ke
 consensus rule. This DIP is justified on this general utility; the shared-collateral application is one
 consumer, not the sole rationale.
 
+This DIP specifies a script-layer primitive only. The applications that consume it, and any product or
+interface layer above them, are out of scope and are covered by their own proposals.
+
 ## Specification
 
 OP_CHECKTEMPLATEVERIFY redefines OP_NOP4 (0xb3). When executed:

@@ -15,6 +15,7 @@
 - Background
 - The four trust points
 - Requirements
+- Scope
 - Constraints
 - Design space
 - Comparison
@@ -108,6 +109,11 @@ Functional requirements, the properties a retail-scale pooling product needs:
 - R5. Funder-chosen withdrawal timing, without creating dust outputs.
 - R6. Governance participation for small funders.
 - R7. Scale past the DIP-0026 payee cap for a churning client base.
+- R8. Compounding. A funder's reward credits can be reclassified as new collateral without a manual
+  deposit, increasing the funder's share. Satisfied at the accounting layer (a reward credit becomes a
+  collateral credit) and settled to L1 only through the same periodic netting as withdrawals.
+- R9. Signed-action interface. Funders perform every action (join, exit, set vote, withdraw, compound)
+  by signing a state transition with their own key, with no custodial account or login.
 
 Security requirements:
 
@@ -119,6 +125,15 @@ Security requirements:
 - S5. One malicious or absent funder cannot destroy the node and everyone's collateral.
 
 R1, R3, R4, and R7 are fundamentally about scale and churn, and they are what make the problem hard.
+
+## Scope
+
+This proposal and its companion Standard proposals specify consensus and Platform primitives only. Those
+primitives are the collateral covenant, the shared-collateral mechanics, governance aggregation, and
+reward settlement. The funder-facing application (wallets, dashboards, referrals, and the signed-action
+interface of R9) is a product layer built on those primitives and is out of scope here. R8 (compounding)
+is an accounting-layer behavior whose only consensus touchpoint is the periodic settlement that already
+exists for withdrawals.
 
 ## Constraints
 
